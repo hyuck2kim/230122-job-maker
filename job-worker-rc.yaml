@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: job-maker-rc
+spec:
+  replicas: 20
+  selector:
+    app: job-maker
+  template:
+    metadata:
+      name: job-maker
+      labels:
+        app: job-maker
+    spec:
+      containers:
+      - name: job-maker
+        image: localhost:5000/job-maker:v1
+        imagePullPolicy: Always
+        ports:
+
